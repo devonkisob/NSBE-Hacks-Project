@@ -37,13 +37,15 @@ def principal_investment_choice():
             print("State [A] for suggested principal investment, or [B] for your  own investment value.")
             confirm_suggested_principal = input()
             if confirm_suggested_principal == ('A'):
+                suggested_principal = principal
                 print("Thank you")
                 break
             elif confirm_suggested_principal == ('B'):
                 know_P = ('Y')
                 print("Thank you")
                 continue
-
+    return principal
+    
 def caluculate_final_amount(term,principal,interest):
     final_amount = float(0)
     interest += 1
