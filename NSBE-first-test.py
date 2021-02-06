@@ -20,14 +20,6 @@ def interest_rate_calculation(term,principal):
     interest += term / 12 * 0.4
     return interest
 
-def caluculate_final_amount(term,principal,interest):
-    final_amount = float(0)
-    interest += 1
-    term = term/12
-    interest = pow(interest,term)
-    final_amount = principal * interest
-    return final_amount
-
     ### finalizing user's principal investment
 def principal_investment_choice():
     print("Do you know how much you want your principal investment to be?")
@@ -52,12 +44,23 @@ def principal_investment_choice():
                 print("Thank you")
                 continue
 
+def caluculate_final_amount(term,principal,interest):
+    final_amount = float(0)
+    interest += 1
+    term = term/12
+    interest = pow(interest,term)
+    final_amount = principal * interest
+    return final_amount
+
 def main():
     print("*"*20)
     print("Compound Interest Calculator")
     get_suggested_principal()
-    principal_investment_choice()                    
+    principal_investment_choice()
     print('How long would you like to invest your money? (in months)')
     term = float(input())
+    interest = float(interest_rate_calculation(term,principal)/100)
     print('Your Interest Rate is', round(interest_rate_calculation(term,principal),2),'%')
+    final_amount = caluculate_final_amount(term,principal,interest)
+    print('Once your investment reach maturity your final amount will be', round(final_amount,2),'$')
 main()
