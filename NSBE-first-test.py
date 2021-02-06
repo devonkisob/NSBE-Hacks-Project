@@ -1,6 +1,6 @@
 '''
 Project Name: NSBE Project
-Author: Owen Stephenson
+Authors: Owen Stephenson, Kyle Clahar
 Date: 06.02.2021
 '''
 '''Initial_principal = input("How much are you investing (in dollars): ")
@@ -8,6 +8,14 @@ interest_rate = input("What is the interest rate (in percentage points): ")
 time_period = input("How long will your envestment be (in years): ")
 compounding_period = input("What is the number of times  the interest is applied per time period: ")
 final_amount = input("What is the final amount of money you wish to have (in dollars): ")'''
+
+def intro():
+    print("""
+Please state your yearly income (CAD$)
+For example: 50000
+""")
+    yincome = input()
+    
 
 def main():
     print("*"*20)
