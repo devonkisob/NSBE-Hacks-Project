@@ -20,6 +20,14 @@ def interest_rate_calculation(term,principal):
     interest += term / 12 * 0.4
     return interest
 
+def caluculate_final_amount(term,principal,interest):
+    final_amount = float(0)
+    interest += 1
+    term = term/12
+    interest = pow(interest,term)
+    final_amount = principal * interest
+    return final_amount
+
     ### finalizing user's principal investment
 def principal_investment_choice():
     print("Do you know how much you want your principal investment to be?")
