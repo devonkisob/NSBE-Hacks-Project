@@ -56,7 +56,7 @@ def principal_investment_choice(suggested_principal):
                 if (principal.isnumeric()) == True:
                     principal = float(principal)
                     if principal > 1000000:
-                        print('* Too high, maximum principal investment is $1 million')
+                        print('* Too high, maximum principal investment is $1 million. Try again.')
                         continue                    
                     print("* Thank you")
                     break
@@ -98,7 +98,7 @@ def time_choice():
         if (time.isnumeric()) == True:
             time = float(time)
             if time > 30:
-                print('That is too long, maximum investment period is 30 years')
+                print('That is too long, maximum investment period is 30 years. Try again.')
                 continue
             print('* Thank you')           
             break
