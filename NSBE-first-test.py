@@ -27,13 +27,18 @@ def get_suggested_principal():
             print(wrong_imput)
             continue
     suggested_principal = float(0)
-    if yincome < 50000:
+    if yincome < 30000:
+        suggested_principal = yincome * 0.05
+    elif yincome >= 30000 and yincome < 50000:
         suggested_principal = yincome * 0.1
-    elif yincome >= 50000:
+    elif yincome >= 50000 and yincome < 70000:
         suggested_principal = yincome * 0.15
+    elif yincome >= 70000 and yincome < 10000:
+        suggested_pricipal = yincome * 0.17
+    elif yincome >= 100000:
+        suggested_principal = yincome * 0.2
     return suggested_principal
 
-    ### finalizing user's principal investment
 def principal_investment_choice(suggested_principal):
     '''
     (float) -> float
@@ -74,12 +79,27 @@ def principal_investment_choice(suggested_principal):
                 else:
                     print(wrong_input)
                     continue
-            if confirm_suggested_principal == ('B'):
+            if confirm_suggested_principal == ('A'):
+                break
+            elif confirm_suggested_principal == ('B'):
                 continue
         else:
             print(wrong_input)
             continue
     return principal
+
+def time_choice():
+    print('How long would you like to invest your money? (in months)')
+    while True:
+        time = input()
+        if (time.isnumeric()) == True:
+            time = float(time)
+            print('Thank you.')
+            break
+        elif (time.isnumeric()) != True:
+            print(wrong_input)
+            continue
+    return time
 
 def interest_rate_calculation(time,principal):
     '''
@@ -109,16 +129,7 @@ def main():
     print("Compound Interest Calculator")
     suggested_principal = get_suggested_principal()
     principal = principal_investment_choice(suggested_principal)
-    print('How long would you like to invest your money? (in months)')
-    while True:
-        time = input()
-        if (time.isnumeric()) == True:
-            time = float(time)
-            print('Thank you.')
-            break
-        elif (time.isnumeric()) != True:
-            print(wrong_input)
-            continue
+    time = time_choice()
     interest = float(interest_rate_calculation(time,principal)/100)
     print('Your Interest Rate is', round(interest_rate_calculation(time,principal),2),'%')
     final_amount = caluculate_final_amount(time,principal,interest)
