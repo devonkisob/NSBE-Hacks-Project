@@ -117,7 +117,6 @@ def interest_rate_calculation(time,principal):
     interest = 0.5
     interest += int(principal) * 0.000003
     interest += time * 0.2
-    return interest
 
 def caluculate_final_amount(time,principal,interest):
     '''
