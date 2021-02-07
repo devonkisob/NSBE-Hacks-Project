@@ -5,13 +5,22 @@ Date: 06.02.2021
 '''
 
 def wrong_input():
+    '''
+    () -> none
+    This function tells the user that they've inputed an invalid value.
+    '''
     print('Sorry, that wont work. State your answer again.')
 
 def get_suggested_principal():
+    '''
+    () -> float
+    Inputs the user's yearly income, only accepts numeric value for the income. Based on this income a suggested investment amount is generate.
+    '''
     print('Please state your yearly income (CAD$)')
     while True:
-        yincome = float(input())
+        yincome = input()
         if (yincome.isnumeric()) == True:
+            yincome = float(yincome)
             print('Thank you.')
             break
         elif (yincome.isnumeric()) != True:
@@ -26,6 +35,11 @@ def get_suggested_principal():
 
     ### finalizing user's principal investment
 def principal_investment_choice(suggested_principal):
+    '''
+    (float) -> float
+    This function suggests the generated investment amount but also allows the user to enter a custom amount to invest. It only accepts certain boolean inputs from the user, either Y/N or A/B. 
+    It returns the principal investment, weither it be a custom amount or the suggested amount.
+    '''
     while True:
         print("Do you know how much you want your principal investment to be?")
         print("State [Y] for yes or [N] for no.")
@@ -33,14 +47,15 @@ def principal_investment_choice(suggested_principal):
         if know_P == ('Y'):
             print('How much would you like to invest? (CAD$)')
             while True:
-                principal = float(input())
+                principal = input()
                 if (principal.isnumeric()) == True:
+                    principal = float(principal)
                     print("Thank you.")
                     break
                 elif (principal.isnumeric()) != True:
                     print(wrong_input)
                     continue
-                break
+            break
             
         elif know_P == ('N'):
             print("Your suggested principal investment is ",int(suggested_principal),'$')
@@ -67,12 +82,21 @@ def principal_investment_choice(suggested_principal):
     return principal
 
 def interest_rate_calculation(time,principal):
+    '''
+    (float,str) -> float
+    This function uses the time and principal of the investment to calculate the interest rate. The time and principal are directly proportional to the interest rate increases as the time and 
+    principle increase.
+    '''
     interest = 0.5
     interest += int(principal) * 0.000003
     interest += time / 12 * 0.4
     return interest
 
 def caluculate_final_amount(time,principal,interest):
+    '''
+    (float,float,float) -> float
+    This function uses the time, principle and interest rate according to the compound interest formula to calculate the final amount of the investment
+    '''
     final_amount = float(0)
     interest += 1
     time = time/12
@@ -87,8 +111,9 @@ def main():
     principal = principal_investment_choice(suggested_principal)
     print('How long would you like to invest your money? (in months)')
     while True:
-        time = float(input())
+        time = input()
         if (time.isnumeric()) == True:
+            time = float(time)
             print('Thank you.')
             break
         elif (time.isnumeric()) != True:
@@ -97,6 +122,6 @@ def main():
     interest = float(interest_rate_calculation(time,principal)/100)
     print('Your Interest Rate is', round(interest_rate_calculation(time,principal),2),'%')
     final_amount = caluculate_final_amount(time,principal,interest)
-    print('Once your current investment reaches maturity your final amount will be', round(final_amount,2),'$')
-    
+    print('Once your current investment reaches maturity your final amount will be $', round(final_amount,2))
+    print('You will have profitted $', round(final_amount - principal,2))
 main()
