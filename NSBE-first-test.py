@@ -92,6 +92,10 @@ def principal_investment_choice(suggested_principal):
     return principal
 
 def time_choice():
+    '''
+    () -> float
+    This function gets the time period of the investment, makes sure it's the right data type and not too high and then returns it.
+    '''
     print('* How long would you like to invest your money? (in years)')
     while True:
         time = input()       
