@@ -148,3 +148,4 @@ def main():
     print('* You will have profitted $', round(final_amount - principal,2))
     
 main()
+input()
