@@ -32,8 +32,6 @@ def principal_investment_choice(suggested_principal):
             confirm_suggested_principal = input()
             if confirm_suggested_principal == ('A'):
                 principal = suggested_principal
-                suggested_principal = principal
-
                 print("Thank you")
                 break
             elif confirm_suggested_principal == ('B'):
