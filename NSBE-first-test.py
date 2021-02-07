@@ -14,12 +14,6 @@ def get_suggested_principal():
         suggested_principal = yincome * 0.15
     return suggested_principal
 
-def interest_rate_calculation(time,principal):
-    interest = 0.5
-    interest += int(principal) * 0.000003
-    interest += time / 12 * 0.4
-    return interest
-
     ### finalizing user's principal investment
 def principal_investment_choice(suggested_principal):
     print("Do you know how much you want your principal investment to be?")
@@ -48,6 +42,11 @@ def principal_investment_choice(suggested_principal):
                 continue
     return principal
 
+def interest_rate_calculation(time,principal):
+    interest = 0.5
+    interest += int(principal) * 0.000003
+    interest += time / 12 * 0.4
+    return interest
 
 def caluculate_final_amount(time,principal,interest):
     final_amount = float(0)
@@ -61,12 +60,13 @@ def main():
     print("*"*20)
     print("Compound Interest Calculator")
     suggested_principal = get_suggested_principal()
-    
     principal = principal_investment_choice(suggested_principal)
     print('How long would you like to invest your money? (in months)')
     time = float(input())
     interest = float(interest_rate_calculation(time,principal)/100)
     print('Your Interest Rate is', round(interest_rate_calculation(time,principal),2),'%')
     final_amount = caluculate_final_amount(time,principal,interest)
-    print('Once your investment reaches maturity your final amount will be', round(final_amount,2),'$')
+    print('Once your current investment reaches maturity your final amount will be', round(final_amount,2),'$')
+    print('Would you like to change your investment to create a more suitable final amount?')
+    
 main()
